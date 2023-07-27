@@ -1,21 +1,53 @@
-version: '3'
+version: '2'
+
+networks:
+  default:
 
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - '.:/var/www/'
+    depends_on:
+      - db
+    networks:
+      - default
 
-volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  web:
+    image: nginx:1.17
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/var/www/public/
+    depends_on:
+      - app
+    ports:
+      - "8050:80"
+    networks:
+      - default
+
+  worker:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    volumes:
+      - ./:/var/www/html
+    user: root
+    command: ["supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+    depends_on:
+      - app
+      - web
+
+  db:
+    image: 'bitnami/mariadb:latest'
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=lsmacox
+      - MARIADB_PASSWORD=password
+      - MARIADB_DATABASE=app
+    ports:
+      - '33030:3306'
+    networks:
+      - default

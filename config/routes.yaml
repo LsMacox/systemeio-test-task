@@ -3,3 +3,15 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+get_price:
+    path: /product/get-price
+    method: POST
+    controller: App\Controller\ProductController::calcPrice
+
+payment:
+    path: /product/payment
+    method: POST
+    controller: App\Controller\ProductController::pay
+
