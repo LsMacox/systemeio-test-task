@@ -7,11 +7,11 @@ controllers:
 
 get_price:
     path: /product/get-price
-    method: POST
+    methods: POST
     controller: App\Controller\ProductController::calcPrice
 
 payment:
     path: /product/payment
-    method: POST
+    methods: POST
     controller: App\Controller\ProductController::pay
 

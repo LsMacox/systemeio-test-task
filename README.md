@@ -20,8 +20,8 @@
 
 - Миграции:
   * products (id, name, price, created_at, updated_at)
-  * coupons (id, code, percent, discount_type, discount_amount, is_active, valid_until)
-  * country_tax_info (id, format, rate, amount_threshold, country_code, country_name, created_at, updated_at)
+  * coupons (id, code, discount_type, discount_amount, is_active, valid_until)
+  * country_tax_info (id, format, rate_percent, amount_threshold, country_code, country_name, created_at, updated_at)
 - Сервис расчета налога и применения купонов:
   * Стратегия типа TaxCalcStrategy, CouponCalcStrategy
   * TaxCalcStrategy:, проверяем на лимит и применяем
