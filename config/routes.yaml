@@ -4,10 +4,18 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+redirect_to_product:
+    path: /
+    methods: GET
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+        route: 'product'
+        permanent: true
+        ignoreAttributes: true
 
-get_price:
-    path: /product/get-price
-    methods: POST
+product:
+    path: /product
+    methods: GET|POST
     controller: App\Controller\ProductController::calcPrice
 
 payment:

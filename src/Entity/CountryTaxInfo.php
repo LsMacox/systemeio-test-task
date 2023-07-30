@@ -135,4 +135,14 @@ class CountryTaxInfo
     {
         $this->updated_at = new \DateTimeImmutable();
     }
+
+    public function getFormatRegex(): string
+    {
+        preg_match_all( '/((X)|(Y))/', $this->format, $matches);
+        $digit_count = count(array_filter($matches[2]));
+        $letter_count = count(array_filter($matches[3]));
+        $reg_format = preg_replace('/X+/', '\d{' . $digit_count . '}', $this->format);
+        $reg_format = preg_replace('/Y+/', '[a-zA-Z]{' . $letter_count . '}', $reg_format);
+        return '/' . $reg_format . '/';
+    }
 }

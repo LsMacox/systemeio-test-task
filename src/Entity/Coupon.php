@@ -3,10 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\CouponRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CouponRepository::class)]
+#[ORM\Table('coupons')]
 class Coupon
 {
     #[ORM\Id]
@@ -17,7 +17,7 @@ class Coupon
     #[ORM\Column(length: 255)]
     private ?string $code = null;
 
-    #[ORM\Column(type: 'coupon_discount_type')]
+    #[ORM\Column]
     private ?int $discount_type = null;
 
     #[ORM\Column]

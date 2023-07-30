@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Doctrine\Types;
+namespace App\Doctrine\Type;
 
 use App\Entity\Enums\CouponDiscountTypeEnum;
 use Doctrine\DBAL\Types\IntegerType;

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Sdk\PaymentProcessor;
+namespace App\Services\Sdk\PaymentProcessor;
 
 
 class PaypalPaymentProcessor
 {
     /**
-     * @throws Exception in case of a failed payment
+     * @throws \Exception in case of a failed payment
      */
     public function pay(int $price): void
     {
         if ($price > 100) {
-            throw new Exception('Too high price');
+            throw new \Exception('Too high price');
         }
 
         //process payment logic

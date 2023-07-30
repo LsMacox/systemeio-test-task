@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Sdk\PaymentProcessor;
+namespace App\Services\Sdk\PaymentProcessor;
 
 
 class StripePaymentProcessor

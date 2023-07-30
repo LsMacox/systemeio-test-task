@@ -7,8 +7,7 @@ doctrine:
         #server_version: '15'
 
         profiling_collect_backtrace: '%kernel.debug%'
-        types:
-            coupon_discount_type: App\Doctrine\Types\CouponDiscountTypeType
+
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
