@@ -8,8 +8,8 @@
 2) ```docker compose exec app php bin/console doctrine:database:create```
 3) ```docker compose exec app php bin/console doctrine:migration:migrate```
 4) ```docker compose exec app php bin/console doctrine:fixtures:load```
-5) Отобразить купоны: ``docker compose exec app php bin/console doctrine:query:sql "select (CASE WHEN discount_type = 1 THEN 'fix' WHEN discount_type = 2 THEN 'percent' END) as discount_type_string, code, discount_amount from coupon"``
-6) Отобразить товары: ``docker compose exec app php bin/console doctrine:query:sql "select id, name, price from product"``
+5) Отобразить купоны: ``docker compose exec app php bin/console doctrine:query:sql "select (CASE WHEN discount_type = 1 THEN 'fix' WHEN discount_type = 2 THEN 'percent' END) as discount_type_string, code, discount_amount from coupons"``
+6) Отобразить товары: ``docker compose exec app php bin/console doctrine:query:sql "select id, name, price from products"``
 
 ## Требования:
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\PaymentProcessor;
+namespace App\Services\Interfaces;
 
 interface PaymentProcessorInterface
 {

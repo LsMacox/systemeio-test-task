@@ -2,6 +2,7 @@
 
 namespace App\Services\PaymentProcessor;
 
+use App\Services\Interfaces\PaymentProcessorInterface;
 use App\Services\Sdk\PaymentProcessor\StripePaymentProcessor;
 use Psr\Container\ContainerInterface;
 

@@ -6,7 +6,7 @@ use App\Dto\ProductPaymentDto;
 use App\Form\Type\ProductPaymentType;
 use App\Repository\ProductRepository;
 use App\Services\Interfaces\CalculatorInterface;
-use App\Services\PaymentProcessor\PaymentProcessorInterface;
+use App\Services\Interfaces\PaymentProcessorInterface;
 use App\Services\PaymentProcessor\PaypalPaymentProcessorAdapter;
 use App\Services\PaymentProcessor\StripePaymentProcessorAdapter;
 use App\Services\ProductPriceCalculators\Calculator;
